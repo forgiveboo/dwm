@@ -1,4 +1,5 @@
 #### 基于dwm6.2打过补丁的dwm
+![截图](https://github.com/forgiveboo/dwm-less/blob/main/screenshot/dwm.png)
 #### 使用的补丁
 `dwm-alpha-20201019-61bb8b2.diff` 透明补丁
 
