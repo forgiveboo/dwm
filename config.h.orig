@@ -73,20 +73,27 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
 static const char *webcmd[]  = { "google-chrome-stable", NULL };
 static const char *lightup[] = {"xbacklight", "-inc", "5", NULL};
 static const char *lightdown[] = {"xbacklight", "-dec", "5", NULL};
 static const char *volup[] = {"amixer", "-qM", "set", "Master", "2%+", "umute", NULL};
 static const char *voldown[] = {"amixer", "-qM", "set", "Master", "2%-", "umute", NULL};
 static const char *mute[] = { "amixer", "-qM", "set", "Master", "toggle", NULL };
+static const char *chwallpaper[] = {"/home/forgiveboo/scripts/chwallpaper.sh", NULL};
+static const char *flameshot[] = {"flameshot", "gui", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,             		XK_w,      spawn,          {.v = webcmd } },
-	{ MODKEY,             		XK_Left,   spawn,          {.v = lightdown } },
-	{ MODKEY,             		XK_Right,  spawn,          {.v = lightup } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = webcmd } },
+	{ MODKEY,                       XK_Left,   spawn,          {.v = lightdown } },
+	{ MODKEY,                       XK_Right,  spawn,          {.v = lightup } },
+	{ MODKEY,                       XK_q,      spawn,          {.v = chwallpaper } },
+	{ 0,                            XK_Print,  spawn,          {.v = chwallpaper } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
@@ -102,10 +109,8 @@ static Key keys[] = {
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_l,      incrogaps,      {.i = -1 } },
 	{ MODKEY|Mod4Mask|ControlMask,  XK_h,      incrigaps,      {.i = +1 } },
 	{ MODKEY|Mod4Mask|ControlMask,  XK_l,      incrigaps,      {.i = -1 } },
-	{ MODKEY,                       XK_k,      hidewin,
-   {0} },
-        { MODKEY|ShiftMask,             XK_k,      restorewin,
-   {0} },
+	{ MODKEY,                       XK_k,      hidewin,        {0} },
+  { MODKEY|ShiftMask,             XK_k,      restorewin,     {0} },
 	{ MODKEY|Mod4Mask,              XK_0,      togglegaps,     {0} },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_y,      incrihgaps,     {.i = +1 } },
@@ -118,7 +123,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,             		XK_c,      killclient,     {0} },
+	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
