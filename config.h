@@ -83,6 +83,7 @@ static const char *voldown[] = {"amixer", "-qM", "set", "Master", "2%-", "umute"
 static const char *mute[] = { "amixer", "-qM", "set", "Master", "toggle", NULL };
 static const char *chwallpaper[] = {"/home/forgiveboo/scripts/chwallpaper.sh", NULL};
 static const char *flameshot[] = {"flameshot", "gui", NULL};
+static const char *updateconfig[] = {"/home/forgiveboo/.local/share/dwm/updateconfig.sh", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -93,7 +94,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Left,   spawn,          {.v = lightdown } },
 	{ MODKEY,                       XK_Right,  spawn,          {.v = lightup } },
 	{ MODKEY,                       XK_q,      spawn,          {.v = chwallpaper } },
-	{ 0,                            XK_Print,  spawn,          {.v = chwallpaper } },
+	{ MODKEY,                       XK_u,      spawn,          {.v = updateconfig } },
+	{ 0,                            XK_Print,  spawn,          {.v = flameshot } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
