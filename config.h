@@ -81,7 +81,7 @@ static const char *lightdown[] = {"xbacklight", "-dec", "5", NULL};
 static const char *volup[] = {"amixer", "-qM", "set", "Master", "2%+", "umute", NULL};
 static const char *voldown[] = {"amixer", "-qM", "set", "Master", "2%-", "umute", NULL};
 static const char *mute[] = { "amixer", "-qM", "set", "Master", "toggle", NULL };
-static const char *chwallpaper[] = {"/home/forgiveboo/scripts/chwallpaper.sh", NULL};
+static const char *chwallpaper[] = {"/home/forgiveboo/.local/share/dwm/chwallpaper.sh", NULL};
 static const char *flameshot[] = {"flameshot", "gui", NULL};
 static const char *updateconfig[] = {"/home/forgiveboo/.local/share/dwm/updateconfig.sh", NULL};
 
